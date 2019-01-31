@@ -1,0 +1,10 @@
+nombre de la base de datos: curso_blog
+tabla nombre: articulos	
+nombre		tipo_datos	otras_especificaciones
+id		int		llave primary y con auto_increment
+titulo		varchar				
+extracto	varchar
+fecha		timestramp	con current_timestramp	determina fecha actual
+texto		text
+thumb		varchar
+es recomendable poner longitud adaptada al tema del blog
