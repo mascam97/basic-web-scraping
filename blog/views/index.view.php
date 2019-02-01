@@ -11,6 +11,9 @@
 							<img src="./imagenes/<?php echo $post['thumb']; ?>" alt="<?php echo $post['titulo'] ?>">
 						</a>
 					</div>
+					<script>
+					alert("script");
+					</script>
 					<p class="extracto"><?php echo $post['extracto'] ?></p>
 					<a href="single.php?id=<?php echo $post['id']; ?>" class="continuar">Continuar Leyendo</a>
 				</article>
