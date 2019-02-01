@@ -9,15 +9,31 @@
     <script src="jquery-3.3.1.min.js"></script>    
     <body>
         <div class="jumbotron">
-	        Url de la pagina <input type="text" name="url" placeholder="Pagina" id="pagina"><br>
-                <button class="">Ver codigo de la pagina</button>
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+					<input type="text" name="url" placeholder="Buscar">
+					<button type="submit" class="icono fa fa-search">Obtener codigo fuente</button>
+                </form>
+	        <button class="limpiar_codigo">Limpiar codigo</button>
         </div>
         <p id="texto">
+        <?php
+function display_sourcecode($url){
+	$lineas = file($url);
+	$output = "";
+	foreach ($lineas as $line_num => $linea) { 
+		//recorremos todas las líneas HTML devueltas por la página
+		$output.= htmlspecialchars($linea);
+	}
+       return $output;
+}
+$url = $_POST['url'];
+echo display_sourcecode($url);
+?>
+
         </p>
 <script>
-$("button").click(function(){
-	$.get($("#pagina").val(), function(data){
-        arregloDeSubCadenas = data.split("<");
+$(".limpiar_codigo").click(function(){
+	arregloDeSubCadenas = $("#texto").text().split("<");
         var contenido_total="";
         for(var a=1; a<arregloDeSubCadenas.length ; a++){
                 if((arregloDeSubCadenas[a].indexOf("html") == -1) && (arregloDeSubCadenas[a].indexOf("style") == -1) &&(arregloDeSubCadenas[a].indexOf("script") == -1)) {
@@ -42,7 +58,6 @@ $("button").click(function(){
         }
         $("#texto").text(contenido_total2);
         });
-});
 </script>
 </body>
 </head>
