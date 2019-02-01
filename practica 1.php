@@ -1,29 +1,3 @@
-<?php 
-function limpiarDatos($datos){
-	// Eliminamos los espacios en blanco al inicio y final de la cadena
-	$datos = trim($datos);
-	// Quitamos las barras / escapandolas con comillas
-	$datos = stripslashes($datos);
-	// Convertimos caracteres especiales en entidades HTML (&, "", '', <, >)
-	$datos = htmlspecialchars($datos);
-	return $datos;
-}
-function display_sourcecode($url){
-	$lineas = file($url);
-	$output = "";
-	foreach ($lineas as $line_num => $linea) { 
-		//recorremos todas las líneas HTML devueltas por la página
-		$output.= "Line #{$line_num} : " . htmlspecialchars($linea) . "\n";
-	}
-       return $output;
-}
-//echo display_sourcecode("http://localhost/PracticasPHP/practicas/blog/");
-//echo display_sourcecode("https://blog.aulaformativa.com/como-ver-codigo-fuente-de-una-pagina-web-haciendo-uso-de-un-script-php/");
-$url = $_POST['url'];
-$url = limpiarDatos($url);
-//echo display_sourcecode($url);
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,25 +5,52 @@ $url = limpiarDatos($url);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.min.css">
     <script src="jquery-3.3.1.min.js"></script>    
     <body>
-<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-					<input type="text" name="url" placeholder="Buscar">
-					<button type="submit" class="icono fa fa-search" >Ver pagina</button>
-                </form>
-                <button  class="icono fa fa-search" id="botto">buttonn 2</button>
-               
+    <div class="jumbotron">
+					Url de la pagina <input type="text" name="url" placeholder="Pagina" id="pagina"><br>
+                                        <button class="">Ver codigo de la pagina</button>
+                                        </div>
+
 <p id="texto">
-<?php
- echo  display_sourcecode($url);
-?>
 </p>
 <script>
-$("#botto").click(function(){
-var texto = $("#texto").html();
-$("#texto").remove("script");
-$("#texto").html(texto);
-console.log(texto);
+$("button").click(function(){
+	$.get($("#pagina").val(), function(data){
+        arregloDeSubCadenas = data.split("<");
+        var contenido_total="";
+        for(var a=1; a<arregloDeSubCadenas.length ; a++){
+                if((arregloDeSubCadenas[a].indexOf("html") == -1) && (arregloDeSubCadenas[a].indexOf("style") == -1) &&(arregloDeSubCadenas[a].indexOf("script") == -1)) {
+                contenido_total += "<"+ arregloDeSubCadenas[a];
+                }
+                var espacio = "";
+                arregloDeSubCadenas2 = contenido_total.split(espacio);
+        var contenido_total2="";
+        }
+        var continuar = 0;
+        var continuar2  =0;
+        for(var a=1; a<arregloDeSubCadenas2.length ; a++){
+                if(arregloDeSubCadenas2[a]=="<"){
+                continuar = 0;
+                continuar2 = 0;
+                }
+                if(arregloDeSubCadenas2[a]==">"){
+                continuar = 1;
+                continuar2=1;
+                }
+                if(continuar==1){
+                if(continuar2==1){
+                contenido_total2 += arregloDeSubCadenas2[a+1];
+                continuar == 0;
+                }else{
+                contenido_total2 += arregloDeSubCadenas2[a];                        
+                continuar2 == 0;
+                }
+                }
+                }
+                $("#texto").text(contenido_total2);
+        });
 });
 </script>
 </body>
