@@ -8,12 +8,18 @@
     <link rel="stylesheet" href="bootstrap.min.css">
     <script src="jquery-3.3.1.min.js"></script>    
     <body>
-        <div class="jumbotron">
+        <div class="jumbotron row">
+                <div class="col-6"> 
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
 					<input type="text" name="url" placeholder="Buscar">
 					<button type="submit" class="icono fa fa-search">Obtener codigo fuente</button>
                 </form>
 	        <button class="limpiar_codigo">Limpiar codigo</button>
+        </div>
+                <div class="col-6">
+                        <button class="ver_top">Ver top 10 palabras mas repetidas</button>
+                        <label id="top"></label>
+                </div> 
         </div>
         <p id="texto">
         <?php
@@ -57,7 +63,43 @@ $(".limpiar_codigo").click(function(){
                 }
         }
         $("#texto").text(contenido_total2);
+});
+$(".ver_top").click(function(){
+        function Determinar_top(arreglo){
+        var Palabras = new Array();
+        for(var a = 0; a<arreglo.length; a++){
+                if(Palabras.indexOf(a)==-1){
+                        if(Palabras[arreglo[a]]>=1)
+                        Palabras[arreglo[a]]++;                
+                        else
+                        Palabras[arreglo[a]] = 1;
+                }
+        }
+        Palabras.sort();
+        var Palabras_top= [];
+       Object.keys(Palabras).forEach(function(e){
+                Palabras_top.push({ palabra: e, repetidos: Palabras[e] },);
         });
+        Palabras_top.sort(function (a, b) {
+                return b.repetidos - a.repetidos;
+        });
+       console.log(Palabras_top);
+        var Palabras_top_10= [];
+        for(var a=0; a<10; a++){
+                Palabras_top_10.push(Palabras_top[a]);
+        }
+        return Palabras_top_10;
+      }
+var sim = /\s+/gi; 
+var texto= $("#texto").text().trim().replace(sim, ' ').split(' ');
+var Palabras_top_10=Determinar_top(texto);
+var contenido = '<table><tr><th>Palabra</th><th>Repeticiones</th></tr>';
+Palabras_top_10.forEach(function(palabra) {
+        contenido += "<tr><th>"+palabra["palabra"]+"</th><th>"+palabra["repetidos"]+"</th></tr>";
+});
+contenido += "</table>";
+$("#top").html(contenido);
+});
 </script>
 </body>
 </head>
