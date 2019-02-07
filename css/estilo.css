@@ -1,0 +1,137 @@
+
+.entry-title {
+    background: -webkit-linear-gradient(left, #ea8711, #d96363, #73a6df, #9085fb, #52ca79);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: tomato;
+
+}
+
+.page-header {
+    background-color: #fc5d5d;
+    margin-top: 0;
+    text-align: center;
+    padding: 10px 10px 10px 40px;
+    font-family: 'Lobster';
+}
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    color: #ffffff;
+    font-size: 30pt;
+    text-decoration: none;
+}
+.esp{
+    padding-left: 150px;
+    padding-right: 150px;
+    background-color: #f7efef;
+
+}
+
+
+
+
+
+/**********   BOTON obt fUnt   *********/
+.btnX { 
+  color: #FCE8E8; 
+  background-color: #FF4C4C; 
+  border-color: #F25C5C; 
+} 
+ 
+.btnX:hover, 
+.btnX:focus, 
+.btnX:active, 
+.btnX.active, 
+.open .dropdown-toggle.btnX { 
+  color: #FCE8E8; 
+  background-color: #FFABAB; 
+  border-color: #F25C5C; 
+} 
+ 
+.btnX:active, 
+.btnX.active, 
+.open .dropdown-toggle.btnX { 
+  background-image: none; 
+} 
+ 
+.btnX.disabled, 
+.btnX[disabled], 
+fieldset[disabled] .btnX, 
+.btnX.disabled:hover, 
+.btnX[disabled]:hover, 
+fieldset[disabled] .btnX:hover, 
+.btnX.disabled:focus, 
+.btnX[disabled]:focus, 
+fieldset[disabled] .btnX:focus, 
+.btnX.disabled:active, 
+.btnX[disabled]:active, 
+fieldset[disabled] .btnX:active, 
+.btnX.disabled.active, 
+.btnX[disabled].active, 
+fieldset[disabled] .btnX.active { 
+  background-color: #FF4C4C; 
+  border-color: #F25C5C; 
+} 
+ 
+.btnX .badge { 
+  color: #FF4C4C; 
+  background-color: #FCE8E8; 
+}
+/**********   TERMINABTON OBT FUENTE *********/
+
+/**********   BTON LIMPIAR   *********/
+
+.btnLim { 
+  color: #FCE8E8; 
+  background-color: #FFABAB; 
+  border-color: #F25C5C; 
+} 
+ 
+.btnLim:hover, 
+.btnLim:focus, 
+.btnLim:active, 
+.btnLim.active, 
+.open .dropdown-toggle.btnLim { 
+  color: #FCE8E8; 
+  background-color: #F25C5C; 
+  border-color: #F25C5C; 
+} 
+ 
+.btnLim:active, 
+.btnLim.active, 
+.open .dropdown-toggle.btnLim { 
+  background-image: none; 
+} 
+ 
+.btnLim.disabled, 
+.btnLim[disabled], 
+fieldset[disabled] .btnLim, 
+.btnLim.disabled:hover, 
+.btnLim[disabled]:hover, 
+fieldset[disabled] .btnLim:hover, 
+.btnLim.disabled:focus, 
+.btnLim[disabled]:focus, 
+fieldset[disabled] .btnLim:focus, 
+.btnLim.disabled:active, 
+.btnLim[disabled]:active, 
+fieldset[disabled] .btnLim:active, 
+.btnLim.disabled.active, 
+.btnLim[disabled].active, 
+fieldset[disabled] .btnLim.active { 
+  background-color: #FFABAB; 
+  border-color: #F25C5C; 
+} 
+ 
+.btnLim .badge { 
+  color: #FFABAB; 
+  background-color: #FCE8E8; 
+}
+
+
+/**********   TERMINA BTN LIMPIAR  *********/
+
+
+
+
+
+

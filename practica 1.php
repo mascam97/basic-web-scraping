@@ -5,19 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">   
+    <link rel="stylesheet" href="css/estilo.css">
     <script src="jquery-3.3.1.min.js"></script>    
+
+      
+    <div class="page-header">
+        <h1>Recolección y Análisis de datos</h1>
+    </div>
+
+
     <body>
-        <div class="jumbotron row">
+        <div class="esp jumbotron row">
                 <div class="col-6"> 
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-					<input type="text" name="url" placeholder="Buscar">
-					<button type="submit" class="icono fa fa-search">Obtener codigo fuente</button>
+					<input type="text" name="url" class="form-control"  placeholder="Buscar">
+					<button type="submit" class="btnX icono fa fa-search">Obtener codigo fuente</button>
                 </form>
-	        <button class="limpiar_codigo">Limpiar codigo</button>
+	        <button class="btnX limpiar_codigo">Limpiar codigo</button>
         </div>
                 <div class="col-6">
-                        <button class="ver_top">Ver top 10 palabras mas repetidas</button>
+                        <button class="btnX ver_top">Ver top 10 palabras mas repetidas !</button>
                         <label id="top"></label>
                 </div> 
         </div>
