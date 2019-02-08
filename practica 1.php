@@ -17,7 +17,7 @@
 
 
     <body>	
-	<meta charset=”utf-8″>
+	<meta charset="utf-8">
         <div class="esp jumbotron row">
                 <div class="col-6"> 
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
@@ -48,6 +48,7 @@ echo display_sourcecode($url);
 
         </p>
 <script>
+        $(".ver_top").hide();
 
 $(".limpiar_codigo").click(function(){
         var newstringreplaced = $("#texto").text().replace(/</gi, "++#<"); 
@@ -74,37 +75,7 @@ var arregloDeSubCadenas = newstringreplaced.split("++#");
                         contenido_total2 += arregloDeSubCadenas2[a];
                 }
         }
-		continuar = false;
-		var contenido_total3="";
-		for(var a=1; a<contenido_total2.length ; a++){
-                if(contenido_total2[a]=="img"){
-                        continuar = false;
-                }
-                if(contenido_total2[a]==";"){
-                        continuar = true;
-                        continue;
-                }
-                if(continuar==true){
-                        contenido_total3 += contenido_total2[a];
-                }
-        }
-		
-		var contenido_total4="";
-		for(var a=1; a<contenido_total3.length ; a++){
-                if(contenido_total3[a]=="&"){
-                        continuar = false;
-                }
-                if(contenido_total3[a]==";"){
-                        continuar = true;
-                        continue;
-                }
-                if(continuar==true){
-                        contenido_total4 += contenido_total3[a];
-                }
-        }
-		
-        $("#texto").text(contenido_total4);
-		
+        $("#texto").text(contenido_total2);$('.ver_top').show();	
 		
 });
 $(".ver_top").click(function(){
