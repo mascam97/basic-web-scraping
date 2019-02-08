@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Recolección y Análisis de datos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">   
@@ -16,7 +16,8 @@
     </div>
 
 
-    <body>
+    <body>	
+	<meta charset=”utf-8″>
         <div class="esp jumbotron row">
                 <div class="col-6"> 
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
@@ -71,9 +72,42 @@ $(".limpiar_codigo").click(function(){
                         contenido_total2 += arregloDeSubCadenas2[a];
                 }
         }
-        $("#texto").text(contenido_total2);
+		continuar = false;
+		var contenido_total3="";
+		for(var a=1; a<contenido_total2.length ; a++){
+                if(contenido_total2[a]=="img"){
+                        continuar = false;
+                }
+                if(contenido_total2[a]==";"){
+                        continuar = true;
+                        continue;
+                }
+                if(continuar==true){
+                        contenido_total3 += contenido_total2[a];
+                }
+        }
+		
+		var contenido_total4="";
+		for(var a=1; a<contenido_total3.length ; a++){
+                if(contenido_total3[a]=="&"){
+                        continuar = false;
+                }
+                if(contenido_total3[a]==";"){
+                        continuar = true;
+                        continue;
+                }
+                if(continuar==true){
+                        contenido_total4 += contenido_total3[a];
+                }
+        }
+		
+        $("#texto").text(contenido_total4);
+		
+		
 });
 $(".ver_top").click(function(){
+	
+		
         function Determinar_top(arreglo){
         var Palabras = new Array();
         for(var a = 0; a<arreglo.length; a++){
@@ -85,6 +119,9 @@ $(".ver_top").click(function(){
                 }
         }
         Palabras.sort();
+		
+
+		
         var Palabras_top= [];
        Object.keys(Palabras).forEach(function(e){
                 Palabras_top.push({ palabra: e, repetidos: Palabras[e] },);
@@ -112,4 +149,4 @@ $("#top").html(contenido);
 </script>
 </body>
 </head>
-</html>
+</html 
