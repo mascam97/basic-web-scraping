@@ -48,6 +48,7 @@ echo display_sourcecode($url);
 
         </p>
 <script>
+
 $(".limpiar_codigo").click(function(){
         var newstringreplaced = $("#texto").text().replace(/</gi, "++#<"); 
 var arregloDeSubCadenas = newstringreplaced.split("++#");

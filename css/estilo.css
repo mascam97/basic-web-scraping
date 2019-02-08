@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Anton|Quicksand');
+@font-face{
+  font-family: 'Anton', sans-serif;
+  src:url(ttf/Anton-Regular.ttf);
+}
+
+@font-face{
+  font-family: 'Quicksand', sans-serif;
+  src:url(ttf/Quicksand-Medium.ttf);
+}
+
+.texto{
+  font-family: 'Quicksand',sans-serif;
+}
 
 .entry-title {
     background: -webkit-linear-gradient(left, #ea8711, #d96363, #73a6df, #9085fb, #52ca79);
@@ -12,7 +26,7 @@
     margin-top: 0;
     text-align: center;
     padding: 10px 10px 10px 40px;
-    font-family: 'Lobster';
+    font-family: 'Anton', sans-serif;
 }
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
