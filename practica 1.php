@@ -138,7 +138,9 @@ $(".ver_top").click(function(){
         return Palabras_top_10;
       }
 var sim = /\s+/gi; 
-var texto= $("#texto").text().trim().replace(sim, ' ').split(' ');
+minusculas = $("#texto").text().toLowerCase();
+var texto= minusculas.trim().replace(sim, ' ').split(' ');
+
 var Palabras_top_10=Determinar_top(texto);
 var contenido = '<table><tr><th>Palabra</th><th>Repeticiones</th></tr>';
 Palabras_top_10.forEach(function(palabra) {
