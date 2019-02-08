@@ -49,11 +49,12 @@ echo display_sourcecode($url);
         </p>
 <script>
 $(".limpiar_codigo").click(function(){
-	arregloDeSubCadenas = $("#texto").text().split("<");
-        var contenido_total="";
+        var newstringreplaced = $("#texto").text().replace(/</gi, "++#<"); 
+var arregloDeSubCadenas = newstringreplaced.split("++#");
+       var contenido_total="";
         for(var a=1; a<arregloDeSubCadenas.length ; a++){
-                if((arregloDeSubCadenas[a].indexOf("html") == -1) && (arregloDeSubCadenas[a].indexOf("style") == -1) &&(arregloDeSubCadenas[a].indexOf("script") == -1)) {
-                        contenido_total += "<"+ arregloDeSubCadenas[a];
+                if((arregloDeSubCadenas[a].indexOf("<style") == -1) && (arregloDeSubCadenas[a].indexOf("<script") == -1)) {
+                        contenido_total += arregloDeSubCadenas[a];
                 }
         var espacio = "";
         arregloDeSubCadenas2 = contenido_total.split(espacio);
