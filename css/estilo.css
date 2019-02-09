@@ -9,7 +9,15 @@
   src:url(ttf/Quicksand-Medium.ttf);
 }
 
+.modal-content{
+  
+  text-align: center;
+  
 }
+#miModal{
+  text-align: center;
+}
+
 .texto{
   font-family: 'Quicksand',sans-serif;
 }
