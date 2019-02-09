@@ -20,9 +20,7 @@
     <body>	
 	<meta charset="utf-8">
     <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <div class="modal-header   " style="background-color: whitesmoke"><strong> Top 10 palabras mas repetidas</strong>       
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -40,7 +38,6 @@
 					<input type="text" name="url" class="form-control"  placeholder="Buscar">
 					<button type="submit" class="btnX icono fa fa-search">Obtener codigo fuente</button>
                 </form>
-                <button class="btnX limpiar_codigo">Limpiar codigo</button><button class="btnX ver_top" data-toggle="modal" data-target="#miModal">Ver top 10 palabras mas repetidas !</button>
                 
         </div>
         </div>
@@ -127,7 +124,6 @@ minusculas = $("#texto").text().toLowerCase();
 var texto= minusculas.trim().replace(sim, ' ').split(' ');
 
 var Palabras_top_10=Determinar_top(texto);
-var contenido = "<table border='2cm'><tr><th>Palabra</th><th>Repeticiones</th></tr>";
 Palabras_top_10.forEach(function(palabra) {
         contenido += "<tr><th>"+palabra["palabra"]+"</th><th>"+palabra["repetidos"]+"</th></tr>";
 });
