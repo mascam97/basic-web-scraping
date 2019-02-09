@@ -68,8 +68,9 @@ $(".limpiar_codigo").click(function(){
 var arregloDeSubCadenas = newstringreplaced.split("++#");
        var contenido_total="";
         for(var a=1; a<arregloDeSubCadenas.length ; a++){
-                if((arregloDeSubCadenas[a].indexOf("<style") == -1) && (arregloDeSubCadenas[a].indexOf("<script") == -1)) {
-                        contenido_total += arregloDeSubCadenas[a];
+                if((arregloDeSubCadenas[a-1].indexOf("<style") == -1) && (arregloDeSubCadenas[a-1].indexOf("<script") == -1)) {
+                        if(arregloDeSubCadenas[a].indexOf("</") == 0)
+                        contenido_total += arregloDeSubCadenas[a-1];
                 }
         var espacio = "";
         arregloDeSubCadenas2 = contenido_total.split(espacio);
