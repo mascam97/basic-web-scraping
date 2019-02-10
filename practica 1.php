@@ -70,10 +70,12 @@ var arregloDeSubCadenas = newstringreplaced.split("++#");
         for(var a=1; a<arregloDeSubCadenas.length ; a++){
                 if((arregloDeSubCadenas[a-1].indexOf("<style") == -1) && (arregloDeSubCadenas[a-1].indexOf("<script") == -1)) {
                         if(arregloDeSubCadenas[a].indexOf("</") == 0)
-                        contenido_total += arregloDeSubCadenas[a-1];
+                        contenido_total += " " +arregloDeSubCadenas[a-1];
                 }
         var espacio = "";
-        arregloDeSubCadenas2 = contenido_total.split(espacio);
+        var minusculas = contenido_total.toLowerCase();
+
+        arregloDeSubCadenas2 = minusculas.split(espacio);
         var contenido_total2="";
         }
         var caracter_omitir= ['.',',','(',')','»','«', ':' , ';','?','/','!','|','=','+','¿'];
@@ -93,8 +95,19 @@ var arregloDeSubCadenas = newstringreplaced.split("++#");
                         contenido_total2 += arregloDeSubCadenas2[a];
                 }
         }
-        $("#texto").text(contenido_total2);$('.ver_top').show();	
-		
+        espacio = " ";
+        arregloDeSubCadenas3 = contenido_total2.split(espacio);
+        var contenido_total3="";
+        var palabras_omitir= ['de','la', 'en', 'el'];
+        var continuar = false;
+        for(var a=1; a<arregloDeSubCadenas3.length ; a++){
+                        for(var b=0; b<palabras_omitir.length ; b++){
+                        if(arregloDeSubCadenas3[a]==palabras_omitir[b])
+                        arregloDeSubCadenas3[a] = " ";
+        }
+        contenido_total3 += " "+arregloDeSubCadenas3[a];
+} 
+        $("#texto").text(contenido_total3);$('.ver_top').show();
 });
 $(".ver_top").click(function(){
 	
@@ -128,8 +141,7 @@ $(".ver_top").click(function(){
         return Palabras_top_10;
       }
 var sim = /\s+/gi; 
-minusculas = $("#texto").text().toLowerCase();
-var texto= minusculas.trim().replace(sim, ' ').split(' ');
+var texto= $("#texto").text().trim().replace(sim, ' ').split(' ');
 
 var Palabras_top_10=Determinar_top(texto);
 var contenido = "<table border='2cm'><tr><th><strong>Palabra</strong></th><th><strong>Repeticiones</strong></th></tr>";
