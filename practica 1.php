@@ -76,6 +76,7 @@ var arregloDeSubCadenas = newstringreplaced.split("++#");
         arregloDeSubCadenas2 = contenido_total.split(espacio);
         var contenido_total2="";
         }
+        var caracter_omitir= ['.',',','(',')','»','«', ':' , ';','?','/','!','|','=','+','¿'];
         var continuar = false;
         for(var a=1; a<arregloDeSubCadenas2.length ; a++){
                 if(arregloDeSubCadenas2[a]=="<"){
@@ -86,6 +87,9 @@ var arregloDeSubCadenas = newstringreplaced.split("++#");
                         continue;
                 }
                 if(continuar==true){
+                        for(var b=0; b<caracter_omitir.length ; b++)
+                        if(arregloDeSubCadenas2[a].indexOf(caracter_omitir[b])!= -1)
+                        arregloDeSubCadenas2[a] = " ";
                         contenido_total2 += arregloDeSubCadenas2[a];
                 }
         }
@@ -138,4 +142,4 @@ $("#top").html(contenido);
 </script>
 </body>
 </head>
-</html 
+</html>
