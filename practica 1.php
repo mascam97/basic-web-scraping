@@ -98,6 +98,15 @@ var arregloDeSubCadenas = newstringreplaced.split("++#");
         espacio = " ";
         arregloDeSubCadenas3 = contenido_total2.split(espacio);
         var contenido_total3="";
+        var palabras_omitir= ['de','la', 'en', 'el','&nsbp', 'y', 'e', 'ni', 'que', 'tanto', 'como', 
+		'ni', 'siquiera', 'no', 'solo', 'sino', 'tambien', 'pero', 'aunque', 'al', 'contrario', 'en', 'cambio', 
+		'sin', 'a', 'de', 'obstante', 'o', 'bien', 'sea', 'decir', 'esto', 'porque', 'ya', 'dado', 'debido', 'puesto', 
+		'como', 'si', 'con', 'tal', 'aunque', 'aun', 'pesar','fin', 'consiguiente', 'ende', 'tan', 'apenas', 'yo', 'mi', 
+		'nos', 'me', 'nos', 'nosotros', 'nosotras', 'conmigo', 'te', 'ti', 'tu', 'os', 'usted', 'ustedes', 'vos', 
+		'vosotras', 'vosotros', 'contigo', 'el', 'ella', 'ello', 'ellos', 'las', 'lo', 'los', 'aquellas', 'aquellos', 
+		'aquel', 'aquella', 'aquello', 'esas', 'esa', 'ese', 'esas', 'esos', 'eso', 'esotro', 'esotra', 'esta', 'estas', 
+		'este', 'estos', 'este', 'esto', 'mia', 'mias', 'mio', 'mios', 'nuestra', 'alguien', 'algunas', 'algunos', 
+		'ultimas', 'ultimos', 'asi', 'se', 'uno', 'mas', 'un', 'ser', 'para', 'mas', 'es', 'por', 'una', 'puede', 'del', 'su', 'son', 'fue', 'sus', 'ha'];
         var continuar = false;
         for(var a=1; a<arregloDeSubCadenas3.length ; a++){
                         for(var b=0; b<palabras_omitir.length ; b++){
