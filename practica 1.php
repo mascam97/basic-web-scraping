@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Recolección y Análisis de datos</title>
+    <title>Data Collection and Analysis</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">   
@@ -13,7 +13,7 @@
     <script src="bootstrap.js"></script> 
       
     <div class="page-header">
-        <h1>Recolección y Análisis de datos</h1>
+        <h1>Data Collection and Analysis</h1>
     </div>
 
 
@@ -22,7 +22,7 @@
     <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document" align="center">
           <div class="modal-content">
-            <div class="modal-header" align="center" style="background-color: #fc5d5d"  ><font face="Anton" color=white size="4px">Top 10 palabras mas repetidas</font>       
+            <div class="modal-header" align="center" style="background-color: #fc5d5d"  ><font face="Anton" color=white size="4px">See the Top 10 repeated Words!</font>       
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -37,10 +37,10 @@
         <div class="esp jumbotron row">
                 <div class="col-12"> 
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-					<input type="text" name="url" class="form-control"  placeholder="Buscar">
-					<button type="submit" class="btnX icono fa fa-search">Obtener codigo fuente</button>
+					<input type="text" name="url" class="form-control"  placeholder="Search">
+					<button type="submit" class="btnX icono fa fa-search">Obtain source code</button>
                 </form>
-                <button class="btnX limpiar_codigo">Limpiar codigo</button><button class="btnX ver_top" data-toggle="modal" data-target="#miModal">Ver top 10 palabras mas repetidas</button>
+                <button class="btnX limpiar_codigo">Clear code</button><button class="btnX ver_top" data-toggle="modal" data-target="#miModal">See the Top 10 repeated Words!</button>
                 
         </div>
         </div>
@@ -98,7 +98,6 @@ var arregloDeSubCadenas = newstringreplaced.split("++#");
         espacio = " ";
         arregloDeSubCadenas3 = contenido_total2.split(espacio);
         var contenido_total3="";
-        var palabras_omitir= ['de','la', 'en', 'el'];
         var continuar = false;
         for(var a=1; a<arregloDeSubCadenas3.length ; a++){
                         for(var b=0; b<palabras_omitir.length ; b++){
@@ -144,7 +143,7 @@ var sim = /\s+/gi;
 var texto= $("#texto").text().trim().replace(sim, ' ').split(' ');
 
 var Palabras_top_10=Determinar_top(texto);
-var contenido = "<table border='2cm'><tr><th><strong>Palabra</strong></th><th><strong>Repeticiones</strong></th></tr>";
+var contenido = "<table border='2cm'><tr><th><strong>Word</strong></th><th><strong>Times</strong></th></tr>";
 Palabras_top_10.forEach(function(palabra) {
         contenido += "<tr><th>"+palabra["palabra"]+"</th><th>"+palabra["repetidos"]+"</th></tr>";
 });
