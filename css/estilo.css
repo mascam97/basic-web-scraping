@@ -56,6 +56,8 @@
 
 /**********   BOTON obt fUnt   *********/
 .btnX { 
+  align-content: center;
+  width: 100%;
   color: #FCE8E8; 
   background-color: #FF4C4C; 
   border-color: #F25C5C; 
@@ -100,61 +102,72 @@ fieldset[disabled] .btnX.active {
   color: #FF4C4C; 
   background-color: #FCE8E8; 
 }
-/**********   TERMINABTON OBT FUENTE *********/
+/**********   TERMINABTON *********/
 
-/**********   BTON LIMPIAR   *********/
-
-.btnLim { 
+.btnY { 
+  width: 50%;
+  color: #FCE8E8; 
+  background-color: #FF4C4C; 
+  border-color: #F25C5C; 
+} 
+ 
+.btnY:hover, 
+.btnY:focus, 
+.btnY:active, 
+.btnY.active, 
+.open .dropdown-toggle.btnY { 
   color: #FCE8E8; 
   background-color: #FFABAB; 
   border-color: #F25C5C; 
 } 
  
-.btnLim:hover, 
-.btnLim:focus, 
-.btnLim:active, 
-.btnLim.active, 
-.open .dropdown-toggle.btnLim { 
-  color: #FCE8E8; 
-  background-color: #F25C5C; 
-  border-color: #F25C5C; 
-} 
- 
-.btnLim:active, 
-.btnLim.active, 
-.open .dropdown-toggle.btnLim { 
+.btnY:active, 
+.btnY.active, 
+.open .dropdown-toggle.btnY { 
   background-image: none; 
 } 
  
-.btnLim.disabled, 
-.btnLim[disabled], 
-fieldset[disabled] .btnLim, 
-.btnLim.disabled:hover, 
-.btnLim[disabled]:hover, 
-fieldset[disabled] .btnLim:hover, 
-.btnLim.disabled:focus, 
-.btnLim[disabled]:focus, 
-fieldset[disabled] .btnLim:focus, 
-.btnLim.disabled:active, 
-.btnLim[disabled]:active, 
-fieldset[disabled] .btnLim:active, 
-.btnLim.disabled.active, 
-.btnLim[disabled].active, 
-fieldset[disabled] .btnLim.active { 
-  background-color: #FFABAB; 
+.btnY.disabled, 
+.btnY[disabled], 
+fieldset[disabled] .btnY, 
+.btnY.disabled:hover, 
+.btnY[disabled]:hover, 
+fieldset[disabled] .btnY:hover, 
+.btnY.disabled:focus, 
+.btnY[disabled]:focus, 
+fieldset[disabled] .btnY:focus, 
+.btnY.disabled:active, 
+.btnY[disabled]:active, 
+fieldset[disabled] .btnY:active, 
+.btnY.disabled.active, 
+.btnY[disabled].active, 
+fieldset[disabled] .btnY.active { 
+  background-color: #FF4C4C; 
   border-color: #F25C5C; 
 } 
  
-.btnLim .badge { 
-  color: #FFABAB; 
+.btnY .badge { 
+  color: #FF4C4C; 
   background-color: #FCE8E8; 
 }
 
 
-/**********   TERMINA BTN LIMPIAR  *********/
+/*////////////////////////////////////////////////////*/
 
+footer{
+   background-color: #fc5d5d;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 35px;
+    text-align: center;
+    color: white;
+}
 
+footer p {
 
-
-
-
+    padding: 10.5px;
+    margin: 0px;
+    line-height: 100%;
+}

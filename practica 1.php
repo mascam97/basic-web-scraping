@@ -38,9 +38,9 @@
                 <div class="col-12"> 
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
 					<input type="text" name="url" class="form-control"  placeholder="Search">
-					<button type="submit" class="btnX icono fa fa-search">Obtain source code</button>
+					<button type="submit" class="btnX icono fa fa-search" onclick="$('.ver_top').hide();">Obtain source code</button>
                 </form>
-                <button class="btnX limpiar_codigo">Clear code</button><button class="btnX ver_top" data-toggle="modal" data-target="#miModal">See the Top 10 repeated Words!</button>
+                <button class="btnY limpiar_codigo">Clear code</button><button class="btnY ver_top" data-toggle="modal" data-target="#miModal">See the Top 10 repeated Words!</button>
                 
         </div>
         </div>
@@ -202,6 +202,20 @@ contenido += "</table>";
 $("#top").html(contenido);
 });
 </script>
+
+
+
+
+
+
+
 </body>
+<br>
+<footer>
+        <p>© 2019<a style="color:#00231a; font-style:bold; text-decoration:none;" > <b><i>Big Data</i> </b></a>,    
+             Equipo 3     
+            <a style="color:#00231a; font-style:bold; text-decoration:none;" > <b><i>Proyecto: Data Collection and Analysis</i> </b></a> </p>
+    </footer>
+
 </head>
 </html>
