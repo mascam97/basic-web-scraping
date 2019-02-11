@@ -81,7 +81,8 @@ var arregloDeSubCadenas = newstringreplaced.split("++#");
         arregloDeSubCadenas2 = minusculas.split(espacio);
         var contenido_total2="";
         }
-        var caracter_omitir= ['.',',','(',')','»','«', ':' , ';','?','/','!','|','=','+','¿'];
+
+        var caracter_omitir= ['.',',','(',')','»','«', ':' , ';','?','/','!','|','=','+','¿', '[', ']', '-', '_', '~', '&', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '?', '#', '¡', '@', '"', '>', '<', "'", '...', '●', '%', '*', '+', '^', '`', '{', '}', 'Ç', '¶'];
         var continuar = false;
         for(var a=1; a<arregloDeSubCadenas2.length ; a++){
                 if(arregloDeSubCadenas2[a]=="<"){
