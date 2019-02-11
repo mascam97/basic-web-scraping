@@ -65,6 +65,9 @@ echo display_sourcecode($url);
 
 $(".limpiar_codigo").click(function(){
         var newstringreplaced = $("#texto").text().replace(/</gi, "++#<"); 
+        newstringreplaced = newstringreplaced.replace(/[í]/g, "i");
+        newstringreplaced = newstringreplaced.replace(/[ó]/g, "o");
+        newstringreplaced = newstringreplaced.replace(/[é]/g, "e");  
 var arregloDeSubCadenas = newstringreplaced.split("++#");
        var contenido_total="";
         for(var a=1; a<arregloDeSubCadenas.length ; a++){
