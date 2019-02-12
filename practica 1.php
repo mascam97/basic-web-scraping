@@ -213,7 +213,7 @@ $("#top").html(contenido);
 <br>
 <footer>
         <p>© 2019<a style="color:#00231a; font-style:bold; text-decoration:none;" > <b><i>Big Data</i> </b></a>,    
-             Equipo 3     
+             Team 3     
             <a style="color:#00231a; font-style:bold; text-decoration:none;" > <b><i>Proyecto: Data Collection and Analysis</i> </b></a> </p>
     </footer>
 
