@@ -214,7 +214,7 @@ $("#top").html(contenido);
 <footer>
         <p>© 2019<a style="color:#00231a; font-style:bold; text-decoration:none;" > <b><i>Big Data</i> </b></a>,    
              Team 3     
-            <a style="color:#00231a; font-style:bold; text-decoration:none;" > <b><i>Proyecto: Data Collection and Analysis</i> </b></a> </p>
+            <a style="color:#00231a; font-style:bold; text-decoration:none;" > <b><i>Project: Data Collection and Analysis</i> </b></a> </p>
     </footer>
 
 </head>
