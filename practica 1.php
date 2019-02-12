@@ -37,7 +37,7 @@
         <div class="esp jumbotron row">
                 <div class="col-12"> 
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-					<input type="text" name="url" class="form-control"  placeholder="Search">
+					<input type="text" name="url" class="form-control"  placeholder="Type the URL(page in spanish)">
 					<button type="submit" class="btnX icono fa fa-search" onclick="$('.ver_top').hide();">Obtain source code</button>
                 </form>
                 <button class="btnY limpiar_codigo">Clear code</button><button class="btnY ver_top" data-toggle="modal" data-target="#miModal">See the Top 10 repeated Words!</button>
