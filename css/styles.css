@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Anton|Quicksand');
 @font-face{
   font-family: 'Anton', sans-serif;
-  src:url(ttf/Anton-Regular.ttf);
+  src:url(font/Anton-Regular.ttf);
 }
 
 @font-face{
   font-family: 'Quicksand', sans-serif;
-  src:url(ttf/Quicksand-Medium.ttf);
+  src:url(font/Quicksand-Medium.ttf);
 }
 
 .modal-content{
@@ -14,6 +14,7 @@
   text-align: center;
   
 }
+
 #miModal{
   text-align: center;
 }
@@ -49,10 +50,6 @@
     background-color: #f7efef;
 
 }
-
-
-
-
 
 /**********   BOTON obt fUnt   *********/
 .btnX { 
@@ -150,7 +147,6 @@ fieldset[disabled] .btnY.active {
   color: #FF4C4C; 
   background-color: #FCE8E8; 
 }
-
 
 /*////////////////////////////////////////////////////*/
 
