@@ -1,4 +1,4 @@
-function CleanCharacteres(data){
+function CleanCharacters(data){
     data = data.replace(/[í]/g, "i");
     data = data.replace(/[ó]/g, "o");
     data = data.replace(/[é]/g, "e");
@@ -69,4 +69,48 @@ function GetTop10(array) {
         top_10_words.push(words_top[a]);
     }
     return top_10_words;
+}
+
+function CleanInfo(data){
+    // The data is proceced to return just key words
+    
+    // Get just the content in the body tag
+    let regex_body = /(\<body.*?\/?\>(.|\n)*\<\/body>)/gms;
+    var head_data = data.match(regex_body)[0];
+    
+    head_data = head_data.toLowerCase();
+
+    // BUG: "<body " is deleted
+    data_cleaned = "<body " + head_data;
+
+    let filters = [
+        /\<script.*?\>.*?\<\/script\>/gms,
+        //"Gets the data in script tags and the tags "
+
+        /\<style.*?\>.*?\<\/style\>/gms,
+        //"Get the data in style tags and the tags " 
+
+        /\<[a-z]+.*?\/\>/gms,
+        // description: "Get single tags as <img src='' />" 
+
+        /\<[a-z]+.*?\>/gms,
+        //"Get opened tags as <table class=''>" 
+
+        /\<\/[a-z0-9]+\>/g, //"Get closed tags as </table>" 
+
+        /\W/g, //"Get no words, number or any no word" 
+
+        /\s[\w\d]{1,2}\s/g,
+        //"Get words with just one or two letters" 
+
+        /(\r|\s{2,})/g,
+         //"Get lines and groups of more than 2 spaces" 
+    ];
+    
+    for (const i in filters) {
+        // Get the filters and remplace with a space the considences
+        data_cleaned = data_cleaned.replace(filters[i], " ");
+      }
+
+      return data_cleaned;
 }

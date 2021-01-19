@@ -38,3 +38,7 @@ You're free to contribute to this project by submitting [issues](https://github.
 ## License
 
 This personal project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
+
+## References :books:
+
+- [Regular expression course](https://platzi.com/clases/expresiones-regulares/) 
