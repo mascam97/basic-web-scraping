@@ -17,5 +17,12 @@ $( document ).ready(function() {
             content += "<li class='list-group-item d-flex justify-content-between align-items-center'>" + word["word"] + "<span class='badge badge-primary badge-pill'>" + word["times"] + " </span></li>";
         });
         $("#most-common-words").html(content);
+        
+        var most_common_tags = GetMostCommonTags(text);
+        var content = "";
+        most_common_tags.forEach(function (tag) {
+            content += "<li class='list-group-item d-flex justify-content-between align-items-center'>" + tag["tag"] + "<span class='badge badge-success badge-pill'>" + tag["times"] + " </span></li>";
+        });
+        $("#most-common-tags").html(content);
     }
 });

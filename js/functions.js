@@ -39,6 +39,43 @@ function DeleteWords(data){
         return data;
 }
 
+function GetMostCommonTags(data){
+   let regex = /\<([a-z0-9]+).*?\>/gms;
+   const completed_tags = [...data.matchAll(regex)];
+
+    var tags = new Array();
+    for (var a = 0; a < completed_tags.length; a++) {
+        if (tags.indexOf(a) == -1) {
+            if (tags[completed_tags[a][1]] >= 1)
+                tags[completed_tags[a][1]]++;
+            else
+                tags[completed_tags[a][1]] = 1;
+        }
+    }
+
+    var tags_top = [];
+    Object.keys(tags).forEach(function (e) {
+        tags_top.push({
+            tag: e,
+            times: tags[e]
+        });
+    });
+    tags_top.sort(function (a, b) {
+        return b.times - a.times;
+    });
+    var most_common_tags = [];
+
+    var ammount = 10;
+    if(tags_top.length<10)
+        ammount = tags_top.length;
+
+    for (var a = 0; a < ammount; a++) {
+        most_common_tags.push(tags_top[a]);
+    }
+    
+    return most_common_tags;
+}
+
 function GetMostCommonWords(data) {
     var words = new Array();
     for (var a = 0; a < data.length; a++) {
@@ -61,8 +98,13 @@ function GetMostCommonWords(data) {
     words_top.sort(function (a, b) {
         return b.times - a.times;
     });
+
+    var ammount = 10;
+    if(words_top.length<10)
+        ammount = tags_top.length;
+
     var most_common_words = [];
-    for (var a = 0; a < 20; a++) {
+    for (var a = 0; a < 10; a++) {
         most_common_words.push(words_top[a]);
     }
 

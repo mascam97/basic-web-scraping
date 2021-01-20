@@ -33,11 +33,13 @@
                 </div>
                 <div class="row">
                         <div class="col-12 col-md-4">
-                                <h3>Most common words</h3> <hr>
+                                <h4>Most common words</h4> <hr>
                                 <ol class="list-group"  id="most-common-words"></ol>
+                                <h4>Most common tags</h4> <hr>
+                                <ol class="list-group"  id="most-common-tags"></ol>
                         </div>
                         <div class="col-12 col-md-8">
-                                <h3>Information</h3> <hr>
+                                <h4>Information</h4> <hr>
                                 <p id="info" class="alert alert-success"></p>
                         </div>
                 </div>
