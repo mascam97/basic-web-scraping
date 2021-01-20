@@ -8,68 +8,74 @@
         <title>Basic Web Scraping</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/styles.css">
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/bootstrap-v4.js"></script>
 </head>
 
 <body>
-        <h1 class="page-header">Basic Web Scraping</h1>
-        <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document" align="center">
-                        <div class="modal-content">
-                                <div class="modal-header" align="center">
-                                        <font face="Anton" color=white size="4px">See the Top 10 repeated Words!</font>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                        </button>
-                                </div>
-                                <div class="container">
-                                <table border='2cm'>
-                                        <thead>
-                                                <th><strong>Word</strong></th>
-                                                <th><strong>Times</strong></th>
-                                        </thead>
-                                        <tbody id="top"></tbody>
-                                </table>
-                                </div>
+        <header class="text-center  bg-light">
+                <h2>Basic Web Scraping</h2>
+                <hr>
+        </header>
+        <main class="container">
+                <div class="row align-center">
+                        <form class="col-12 col-md-6" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="get">
+                                Type a URL: <input type="text" name="url" placeholder="http(s)://www.domain.com" value="<?php if (isset($_GET['url'])) echo $_GET['url']  ?>"required>
+                                <button type="submit" class="btn btn-primary" onclick="$('#look_top').hide();">Get source code</button>
+                        </form>
+                        <div class="col-12 col-md-6">
+                                <button class="btn btn-success" id="clean_data" >Clear data</button>
+                                <button class="btn btn-secondary" id="look_top" data-toggle="modal" data-target="#miModal">Look most common words</button>
                         </div>
                 </div>
-        </div>
-        <div class="esp jumbotron row">
-                <div class="col-12">
-                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="get">
-                                <input type="text" name="url" class="form-control" placeholder="Type the URL(page in spanish)">
-                                <button type="submit" class="btnX icono fa fa-search" onclick="$('.look_top').hide();">Obtain source code</button>
-                        </form>
-                        <button class="btnY clean_code">Clear code</button>
-                        <button class="btnY look_top" data-toggle="modal" data-target="#miModal">See the Top 10 repeated Words!</button>
+                <div class="row">
+                        <h3 class="col-12 text-center">Data</h3>
+                        <p class="col-12 alert alert-success" id="text">
+                                <?php
+                                function display_sourcecode($url)
+                                {
+                                        $lines = file($url);
+                                        $output = "";
+                                        foreach ($lines as $line_num => $line) {
+                                                // this gets all the lines
+                                                $output .= htmlspecialchars($line);
+                                        }
+                                        return $output;
+                                }
+                                if (isset($_GET['url'])){
+                                        $url = $_GET['url'];
+                                        echo display_sourcecode($url);
+                                }
+                                ?>
+                        </p>
                 </div>
-        </div>
-        <p id="text">
-                <?php
-                function display_sourcecode($url)
-                {
-                        $lineas = file($url);
-                        $output = "";
-                        foreach ($lineas as $line_num => $linea) {
-                                // this gets all the lines
-                                $output .= htmlspecialchars($linea);
-                        }
-                        return $output;
-                }
-                if (isset($_GET['url'])){
-                        $url = $_GET['url'];
-                        echo display_sourcecode($url);
-                }
-                ?>
-        </p>
-        <br>
-        <footer>
+        </main>
+        <footer class="text-center">
                 <p>
                         <a href="https://github.com/martin-stepwolf/basic-web-scraping" target="_blank" rel="noopener noreferrer">Source code</a>
                 </p>
         </footer>
+        <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document" align="center">
+                        <div class="modal-content">
+                                <div class="modal-header" align="center">
+                                        <h5 class="modal-title" id="exampleModalLabel">Top 10 most common words!</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                        </button>
+                                </div>
+                                <div class="table-responsive">
+                                        <table class="table table-striped table-secondary">
+                                                <thead>
+                                                        <th><strong>Word</strong></th>
+                                                        <th><strong>Times</strong></th>
+                                                </thead>
+                                                <tbody id="top"></tbody>
+                                        </table>
+                                </div>
+                        </div>
+                </div>
+        </div>
         <script src="js/functions.js"></script>
         <script src="js/index.js"></script>
 </body>

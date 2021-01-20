@@ -1,6 +1,6 @@
-$(".look_top").hide();
+$("#look_top").hide();
 
-$(".clean_code").click(function () {
+$("#clean_data").click(function () {
     const text = CleanCharacters($("#text").text());
     const data_cleaned = CleanInfo(text);
 
@@ -24,10 +24,10 @@ $(".clean_code").click(function () {
         total_content3 += " " + substring_array3[a];
     }
     $("#text").text(total_content3);
-    $('.look_top').show();
+    $('#look_top').show();
 });
 
-$(".look_top").click(function () {
+$("#look_top").click(function () {
     let sim = /\s+/gi;
     var text = $("#text").text().trim().replace(sim, ' ').split(' ');
 

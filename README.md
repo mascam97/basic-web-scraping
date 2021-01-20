@@ -14,6 +14,11 @@ As IT student, I knew already about php and JavaScript, in the subject I achieve
 - Teamwork despite nobody uses git/github.
 - Get the data with PHP and process it with JavaScript.
 
+Now with the refactorization I achieved:
+
+- Clean code, HTML semantic and better practices.
+- Use regular expressions to clean the data.
+
 ### Installing 🔧
 
 The programs you need are:
