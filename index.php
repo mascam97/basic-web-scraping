@@ -9,7 +9,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/bootstrap-v4.js"></script>
 </head>
 
 <body>
@@ -20,62 +19,45 @@
         <main class="container">
                 <div class="row align-center">
                         <form class="col-12 col-md-6" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="get">
-                                Type a URL: <input type="text" name="url" placeholder="http(s)://www.domain.com" value="<?php if (isset($_GET['url'])) echo $_GET['url']  ?>"required>
-                                <button type="submit" class="btn btn-primary" onclick="$('#look_top').hide();">Get source code</button>
+                                <div class="form-group">
+                                        <label for="url">Type a URL (preferably in spanish):</label>
+                                        <input type="text" class="form-control" id="url" name="url" placeholder="http(s)://www.domain.com" value="<?php if (isset($_GET['url'])) echo $_GET['url']  ?>"required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Get information</button>
                         </form>
                         <div class="col-12 col-md-6">
-                                <button class="btn btn-success" id="clean_data" >Clear data</button>
-                                <button class="btn btn-secondary" id="look_top" data-toggle="modal" data-target="#miModal">Look most common words</button>
+                                Description: Project to get source code (HTML) from a website and process it to clean information (no html tags, javascript, css code and some words) and get the most common words.
+                                <a href="https://github.com/martin-stepwolf/basic-web-scraping" target="_blank" rel="noopener noreferrer">Source code</a> <br>
+                                <strong>Note: This website does not collect information about you and your interaction (neither cookies nor database).</strong>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="col-12 col-md-4">
+                                <h3>Most common words</h3> <hr>
+                                <ol class="list-group"  id="most-common-words"></ol>
+                        </div>
+                        <div class="col-12 col-md-8">
+                                <h3>Information</h3> <hr>
+                                <p id="info" class="alert alert-success"></p>
                         </div>
                 </div>
                 <div class="row">
                         <h3 class="col-12 text-center">Data</h3>
-                        <p class="col-12 alert alert-success" id="text">
+                        <p class="col-12 alert alert-secondary" id="text">
                                 <?php
-                                function display_sourcecode($url)
-                                {
-                                        $lines = file($url);
+                                if (isset($_GET['url'])){
+                                        $lines = file($_GET['url']);
                                         $output = "";
                                         foreach ($lines as $line_num => $line) {
                                                 // this gets all the lines
-                                                $output .= htmlspecialchars($line);
+                                                $output .= $line;
                                         }
-                                        return $output;
-                                }
-                                if (isset($_GET['url'])){
-                                        $url = $_GET['url'];
-                                        echo display_sourcecode($url);
+                                        echo htmlspecialchars($output);
                                 }
                                 ?>
                         </p>
                 </div>
         </main>
-        <footer class="text-center">
-                <p>
-                        <a href="https://github.com/martin-stepwolf/basic-web-scraping" target="_blank" rel="noopener noreferrer">Source code</a>
-                </p>
-        </footer>
-        <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document" align="center">
-                        <div class="modal-content">
-                                <div class="modal-header" align="center">
-                                        <h5 class="modal-title" id="exampleModalLabel">Top 10 most common words!</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                        </button>
-                                </div>
-                                <div class="table-responsive">
-                                        <table class="table table-striped table-secondary">
-                                                <thead>
-                                                        <th><strong>Word</strong></th>
-                                                        <th><strong>Times</strong></th>
-                                                </thead>
-                                                <tbody id="top"></tbody>
-                                        </table>
-                                </div>
-                        </div>
-                </div>
-        </div>
         <script src="js/functions.js"></script>
         <script src="js/index.js"></script>
 </body>

@@ -1,55 +1,52 @@
 function CleanCharacters(data){
-    data = data.replace(/[í]/g, "i");
-    data = data.replace(/[ó]/g, "o");
-    data = data.replace(/[é]/g, "e");
-    data = data.replace(/[ü]/g, "u");
-    data = data.replace(/[â]/g, "a");
-    data = data.replace(/[ä]/g, "a");
-    data = data.replace(/[à]/g, "a");
-    data = data.replace(/[å]/g, "a");
-    data = data.replace(/[ê]/g, "e");
-    data = data.replace(/[ë]/g, "e");
-    data = data.replace(/[è]/g, "e");
-    data = data.replace(/[ï]/g, "ò");
-    data = data.replace(/[î]/g, "i");
-    data = data.replace(/[ì]/g, "i");
-    data = data.replace(/[Ä]/g, "A");
-    data = data.replace(/[Å]/g, "A");
-    data = data.replace(/[É]/g, "E");
-    data = data.replace(/[æ]/g, " ");
-    data = data.replace(/[á]/g, "a");
-    data = data.replace(/[ô]/g, "o");
-    data = data.replace(/[ö]/g, "o");
-    data = data.replace(/[ò]/g, "o");
-    data = data.replace(/[û]/g, "u");
-    data = data.replace(/[ù]/g, "u");
-    data = data.replace(/[ú]/g, "u");
-    data = data.replace(/[ÿ]/g, "y");
-    data = data.replace(/[Ö]/g, "O");
-    data = data.replace(/[Ü]/g, "U");
-    data = data.replace(/[ø]/g, "o");
-    data = data.replace(/[£]/g, " ");
-    data = data.replace(/[Ø]/g, "O");
-    data = data.replace(/[×]/g, "x");
-    data = data.replace(/[ƒ]/g, "f");
-    data = data.replace(/[Á]/g, "A");
-    data = data.replace(/[Í]/g, "I");
-    data = data.replace(/[Ó]/g, "O");
-    data = data.replace(/[Ú]/g, "U");
-    data = data.replace(/[Ë]/g, "E");
-    data = data.replace(/[Ï]/g, "I");
-    data = data.replace(/[Ü]/g, "U");
+    data = data.replace(/[âäàåá]/gi, "a");
+    data = data.replace(/[êëèé]/gi, "e");
+    data = data.replace(/[ïîìí]/gi, "i");
+    data = data.replace(/[ôöòóø]/gi, "o");
+    data = data.replace(/[üûùú]/gi, "u");
+    data = data.replace(/[ñ]/gi, "n");
+
     return data;
 }
 
-function GetTop10(array) {
+function DeleteWords(data){
+    const words = [
+            // spanish
+            'de', 'la', 'en', 'el', 'y', 'e', 'ni', 'que', 'tanto', 'como',
+            'ni', 'siquiera', 'no', 'solo', 'sino', 'tambien', 'pero', 'aunque', 'al',
+            'contrario', 'en', 'cambio', 'sin', 'a', 'de', 'obstante', 'o', 'bien', 
+            'sea', 'decir', 'esto', 'porque', 'ya', 'dado', 'debido', 'puesto',
+            'como', 'si', 'con', 'tal', 'aunque', 'aun', 'pesar', 'fin', 'consiguiente', 
+            'ende', 'tan', 'apenas', 'yo', 'mi', 'nos', 'me', 'nos', 'nosotros', 'nosotras', 
+            'conmigo', 'te', 'ti', 'tu', 'os', 'usted', 'ustedes', 'vos',
+            'vosotras', 'vosotros', 'contigo', 'el', 'ella', 'ello', 'ellos', 'las', 
+            'lo', 'los', 'aquellas', 'aquellos', 'aquel', 'aquella', 'aquello', 'esas', 
+            'esa', 'ese', 'esas', 'esos', 'eso', 'otro', 'otra', 'esta', 'estas',
+            'este', 'estos', 'este', 'esto', 'mia', 'mias', 'mio', 'mios', 'nuestra', 
+            'alguien', 'algunas', 'algunos', 'pasar', 'ultimos', 'asi', 'se', 'uno', 
+            'mas', 'un', 'ser', 'para', 'mas', 'es', 'por', 'una', 'puede', 'del', 'su', 
+            'son', 'fue', 'sus', 'ha',
+            // english
+            'and', 'the', 'for', 'with', 'you', 'that', 'are', 'they', 'our', 'him', 'her', 
+            'your', 'this', 'those', 'these'
+        ];
+
+        for (var i = 0; i < words.length; i++) {
+            var reg = new RegExp(" "+words[i]+" ","gi");
+            data = data.replace(reg, " ");
+        }
+
+        return data;
+}
+
+function GetMostCommonWords(data) {
     var words = new Array();
-    for (var a = 0; a < array.length; a++) {
+    for (var a = 0; a < data.length; a++) {
         if (words.indexOf(a) == -1) {
-            if (words[array[a]] >= 1)
-                words[array[a]]++;
+            if (words[data[a]] >= 1)
+                words[data[a]]++;
             else
-                words[array[a]] = 1;
+                words[data[a]] = 1;
         }
     }
     words.sort();
@@ -64,15 +61,16 @@ function GetTop10(array) {
     words_top.sort(function (a, b) {
         return b.times - a.times;
     });
-    var top_10_words = [];
-    for (var a = 0; a < 10; a++) {
-        top_10_words.push(words_top[a]);
+    var most_common_words = [];
+    for (var a = 0; a < 20; a++) {
+        most_common_words.push(words_top[a]);
     }
-    return top_10_words;
+
+    return most_common_words;
 }
 
 function CleanInfo(data){
-    // The data is proceced to return just key words
+    // The data is procesed to return just key words
     
     // Get just the content in the body tag
     let regex_body = /(\<body.*?\/?\>(.|\n)*\<\/body>)/gms;
@@ -80,7 +78,7 @@ function CleanInfo(data){
     
     head_data = head_data.toLowerCase();
 
-    // BUG: "<body " is deleted
+    // BUG: "<body " is deleted in data.match(regex_body)[0]
     data_cleaned = "<body " + head_data;
 
     let filters = [
@@ -90,9 +88,6 @@ function CleanInfo(data){
         /\<style.*?\>.*?\<\/style\>/gms,
         //"Get the data in style tags and the tags " 
 
-        /\<[a-z]+.*?\/\>/gms,
-        // description: "Get single tags as <img src='' />" 
-
         /\<[a-z]+.*?\>/gms,
         //"Get opened tags as <table class=''>" 
 
@@ -100,11 +95,11 @@ function CleanInfo(data){
 
         /\W/g, //"Get no words, number or any no word" 
 
-        /\s[\w\d]{1,2}\s/g,
+        /\s[a-z]{1,2}\s/g,
         //"Get words with just one or two letters" 
 
         /(\r|\s{2,})/g,
-         //"Get lines and groups of more than 2 spaces" 
+        //"Get lines and groups of more than 2 spaces" 
     ];
     
     for (const i in filters) {
