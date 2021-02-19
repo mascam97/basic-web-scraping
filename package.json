@@ -1,0 +1,25 @@
+{
+  "name": "basic-web-scraping",
+  "version": "2.0.0",
+  "description": "Website to get data from other website, clean the code and get the most common words.",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "web-scraping",
+    "regular-expressions",
+    "jest",
+    "unit-testing",
+    "javascript"
+  ],
+  "author": "Martín Campos martin-stepwolf",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.12.17",
+    "@babel/preset-env": "^7.12.17",
+    "babel-jest": "^26.6.3",
+    "babel-polyfill": "^6.26.0",
+    "jest": "^26.6.3"
+  },
+  "dependencies": {}
+}
