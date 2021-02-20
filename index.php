@@ -61,7 +61,7 @@
                 </div>
         </main>
         <script src="js/functions.js"></script>
-        <script src="js/index.js"></script>
+        <script type="module" src="js/index.js"></script>
 </body>
 
 </html>

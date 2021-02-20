@@ -50,7 +50,7 @@ export const ClearInfo = (text) => {
 }
 
 export const ReplaceCharacters = (words) => {
-    data = words.replace(/[âäàåá]/gi, "a");
+    let data = words.replace(/[âäàåá]/gi, "a");
     data = data.replace(/[êëèé]/gi, "e");
     data = data.replace(/[ïîìí]/gi, "i");
     data = data.replace(/[ôöòóø]/gi, "o");
@@ -83,8 +83,8 @@ export const DeleteWords = (data) => {
         'your', 'this', 'those', 'these'
     ];
 
-    for (var i = 0; i < words.length; i++) {
-        var reg = new RegExp(" " + words[i] + " ", "gi");
+    for (let i = 0; i < words.length; i++) {
+        let reg = new RegExp(" " + words[i] + " ", "gi");
         data = data.replace(reg, " ");
     }
 

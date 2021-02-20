@@ -1,28 +1,33 @@
-$( document ).ready(function() {
-    const text = $("#text").text();
-    if(text!=''){
-        var data_cleaned = text;
+import { RemoveHtmlCode, ClearInfo, ReplaceCharacters, DeleteWords } from './filters.js';
 
-        // Replace characters like ó for just o
-        var data_cleaned = CleanCharacters(data_cleaned);
-        // Delete some words like el, la, y, no, etc
-        var data_cleaned = DeleteWords(data_cleaned);
-        // Delete tags, short words (1-2 letters), etc.
-        var data_cleaned = CleanInfo(data_cleaned);
-        $("#info").text(data_cleaned);
+$(document).ready(function () {
+    let text = $("#text").text();
+    if (text != '') {
 
-        var most_common_words = GetMostCommonWords(data_cleaned.trim().replace(/\s+/gi, ' ').split(' '));
-        var content = "";
+        let source_code = text;
+        source_code = GetBody(source_code);
+        source_code = RemoveHtmlCode(source_code);
+        source_code = DeleteWords(source_code);
+        source_code = ReplaceCharacters(source_code);
+        source_code = ClearInfo(source_code);
+        $("#info").text(source_code);
+
+        const most_common_words = GetMostCommonWords(source_code.trim().split(' '));
         most_common_words.forEach(function (word) {
-            content += "<li class='list-group-item d-flex justify-content-between align-items-center'>" + word["word"] + "<span class='badge badge-primary badge-pill'>" + word["times"] + " </span></li>";
+            $("#most-common-words").append(`
+            <li class='list-group-item d-flex justify-content-between align-items-center'>
+                ${word["word"]}
+                <span class='badge badge-primary badge-pill'>${word["times"]}</span>
+            </li>`);
         });
-        $("#most-common-words").html(content);
-        
-        var most_common_tags = GetMostCommonTags(text);
-        var content = "";
+
+        const most_common_tags = GetMostCommonTags(text);
         most_common_tags.forEach(function (tag) {
-            content += "<li class='list-group-item d-flex justify-content-between align-items-center'>" + tag["tag"] + "<span class='badge badge-success badge-pill'>" + tag["times"] + " </span></li>";
+            $("#most-common-tags").append(`
+            <li class='list-group-item d-flex justify-content-between align-items-center'>
+                ${tag["tag"]}
+                <span class='badge badge-success badge-pill'>${tag["times"]}</span>
+            </li>`);
         });
-        $("#most-common-tags").html(content);
     }
 });
