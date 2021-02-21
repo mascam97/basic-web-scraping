@@ -3,7 +3,9 @@
   "version": "2.0.0",
   "description": "Website to get data from other website, clean the code and get the most common words.",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "keywords": [
     "web-scraping",

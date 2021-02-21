@@ -1,4 +1,4 @@
-function GetMostCommonTags(data) {
+export const GetMostCommonTags = (data) => {
     let regex = /\<([a-z0-9]+).*?\>/gms;
     const completed_tags = [...data.matchAll(regex)];
 
@@ -35,7 +35,8 @@ function GetMostCommonTags(data) {
     return most_common_tags;
 }
 
-function GetMostCommonWords(data) {
+export const GetMostCommonWords = (data) => {
+    data = data.trim().split(' ');
     let words = new Array();
     for (let a = 0; a < data.length; a++) {
         if (words.indexOf(a) == -1) {
@@ -60,7 +61,7 @@ function GetMostCommonWords(data) {
 
     let ammount = 10;
     if (words_top.length < 10)
-        ammount = tags_top.length;
+        ammount = words_top.length;
 
     let most_common_words = [];
     for (let a = 0; a < 10; a++) {
@@ -70,13 +71,10 @@ function GetMostCommonWords(data) {
     return most_common_words;
 }
 
-function GetBody(data) {
+export const GetBody = (data) => {
     // Get just the content in the body tag
     const regex_body = /(\<body.*?\/?\>(.|\n)*\<\/body>)/gms;
     let head_data = data.match(regex_body)[0];
 
-    // BUG: "<body " is deleted in data.match(regex_body)[0]
-    data_cleaned = "<body " + head_data;
-
-    return data_cleaned;
+    return head_data;
 }

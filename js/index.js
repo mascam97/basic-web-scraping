@@ -1,3 +1,4 @@
+import { GetMostCommonTags, GetMostCommonWords, GetBody } from './functions.js';
 import { RemoveHtmlCode, ClearInfo, ReplaceCharacters, DeleteWords } from './filters.js';
 
 $(document).ready(function () {
@@ -12,7 +13,7 @@ $(document).ready(function () {
         source_code = ClearInfo(source_code);
         $("#info").text(source_code);
 
-        const most_common_words = GetMostCommonWords(source_code.trim().split(' '));
+        const most_common_words = GetMostCommonWords(source_code);
         most_common_words.forEach(function (word) {
             $("#most-common-words").append(`
             <li class='list-group-item d-flex justify-content-between align-items-center'>
