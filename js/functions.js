@@ -1,6 +1,7 @@
 export const GetTagsAsText = (data) => {
     let regex = /\<([a-z0-9]+).*?\>/gms;
     const completed_tags = [...data.matchAll(regex)];
+    // BUG: at this point the text cannot work with matchAll()
 
     let string_tags = '';
     completed_tags.forEach( ( tag ) => {
