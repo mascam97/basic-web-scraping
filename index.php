@@ -8,7 +8,6 @@
         <title>Basic Web Scraping</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <script src="js/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
@@ -60,8 +59,7 @@
                         </p>
                 </div>
         </main>
-        <script src="js/functions.js"></script>
-        <script src="js/index.js"></script>
+        <script type="module" src="js/index.js"></script>
 </body>
 
 </html>

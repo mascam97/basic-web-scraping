@@ -1,0 +1,7 @@
+node_modules
+
+# HTML files about Testing coverage
+coverage
+
+# Snapshots from jest - testing coverage
+__tests__/__snapshots__
