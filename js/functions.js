@@ -1,74 +1,39 @@
-export const GetMostCommonTags = (data) => {
+export const GetTagsAsText = (data) => {
     let regex = /\<([a-z0-9]+).*?\>/gms;
     const completed_tags = [...data.matchAll(regex)];
 
-    let tags = new Array();
-    for (let a = 0; a < completed_tags.length; a++) {
-        if (tags.indexOf(a) == -1) {
-            if (tags[completed_tags[a][1]] >= 1)
-                tags[completed_tags[a][1]]++;
-            else
-                tags[completed_tags[a][1]] = 1;
-        }
-    }
+    let string_tags = '';
+    completed_tags.forEach( ( tag ) => {
+        string_tags += `${tag[1]} `;
+      });
 
-    let tags_top = [];
-    Object.keys(tags).forEach(function (e) {
-        tags_top.push({
-            tag: e,
-            times: tags[e]
-        });
-    });
-    tags_top.sort(function (a, b) {
-        return b.times - a.times;
-    });
-    let most_common_tags = [];
-
-    let ammount = 10;
-    if (tags_top.length < 10)
-        ammount = tags_top.length;
-
-    for (let a = 0; a < ammount; a++) {
-        most_common_tags.push(tags_top[a]);
-    }
-
-    return most_common_tags;
+    return string_tags;
 }
 
-export const GetMostCommonWords = (data) => {
+export const GetWordsAndRepetitions = (data) => {
+    
     data = data.trim().split(' ');
-    let words = new Array();
-    for (let a = 0; a < data.length; a++) {
-        if (words.indexOf(a) == -1) {
-            if (words[data[a]] >= 1)
-                words[data[a]]++;
-            else
-                words[data[a]] = 1;
-        }
-    }
-    words.sort();
+    let words = {};
 
-    let words_top = [];
+    // create an object {word_1:times_1, word_n:times_n}
+    data.forEach( ( word ) => {
+        words[ word ] = ( words[ word ] || 0 ) + 1;
+      });
+
+    // format the data in array with objects [{word:name_1,times:time_1}, {word:name_n,times:times_n}]
+    let words_array = [];
     Object.keys(words).forEach(function (e) {
-        words_top.push({
+        words_array.push({
             word: e,
             times: words[e]
         });
     });
-    words_top.sort(function (a, b) {
+    
+    words_array.sort(function (a, b) {
         return b.times - a.times;
     });
 
-    let ammount = 10;
-    if (words_top.length < 10)
-        ammount = words_top.length;
-
-    let most_common_words = [];
-    for (let a = 0; a < 10; a++) {
-        most_common_words.push(words_top[a]);
-    }
-
-    return most_common_words;
+    return words_array;
 }
 
 export const GetBody = (data) => {

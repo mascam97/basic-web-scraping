@@ -15,10 +15,8 @@ export const RemoveHtmlCode = (htmlCode) => {
     data = data.replace(/(\r|\s{2,})/g, " ");
     //"Remove lines and groups of more than 2 spaces" 
 
-    data = data.replace(/^\s/g, "");
+    data = data.trim();
     //" If there is an space at the beginning, it is deleted
-
-    data = data.replace(/\s$/g, "");
     //" If there is an space at the final it is deleted
 
     return data;
@@ -27,7 +25,7 @@ export const RemoveHtmlCode = (htmlCode) => {
 export const ClearInfo = (text) => {
 
     let data = text.replace(/\W/g, " ");
-    //"Get no words, number or any no word"
+    //"Delete no words, number or any no word"
 
     data = data.toLowerCase();
     // Use just lower case
@@ -35,15 +33,13 @@ export const ClearInfo = (text) => {
     data = data.replace(/\s[a-z]{1,2}\s/g, " ");
     data = data.replace(/^[a-z]{1,2}\s/g, " ");
     data = data.replace(/\s[a-z]{1,2}$/g, " ");
-    //"Get words with just one or two letters" 
+    //"Delete words with just one or two letters" 
 
     data = data.replace(/(\r|\s{2,})/g, " ");
-    //"Get lines and groups of more than 2 spaces" 
+    //"Delete lines and groups of more than 2 spaces" 
 
-    data = data.replace(/^\s/g, "");
+    data = data.trim();
     //" If there is an space at the beginning, it is deleted
-
-    data = data.replace(/\s$/g, "");
     //" If there is an space at the final it is deleted
 
     return data;

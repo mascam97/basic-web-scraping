@@ -1,10 +1,13 @@
-import { GetMostCommonTags, GetMostCommonWords, GetBody } from '../js/functions.js';
+import { GetTagsAsText, GetWordsAndRepetitions, GetBody } from '../js/functions.js';
 
 describe('Get most common words', () => {
     test('get words', () => {
-        // TODO: change the format about the received data and allow less than 10 words
-        expect(GetMostCommonWords("dog cat dog dog fish"))
-            .toHaveLength(10);
+        expect(GetWordsAndRepetitions("dog cat dog dog fish"))
+            .toHaveLength(3);
+    });
+    test('get tags', () => {
+        expect(GetWordsAndRepetitions("div h1 p img img img div"))
+            .toHaveLength(4);
     });
 });
 
@@ -28,10 +31,10 @@ describe('Get most common words', () => {
 describe('Get body from HTML code', () => {
     test('get body tags', () => {
         expect(GetBody(
-            `<h1>
+            `<html>
             <head> <title>Title</title></head>
             <body><h1>Title</h1><p>Text</p></body>
-            </h1>
+            </html>
             `
         )).toBe("<body><h1>Title</h1><p>Text</p></body>");
     });
