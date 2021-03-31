@@ -18,9 +18,9 @@ if (text != '') {
     // You can set how many words and at least how many times here
     while (i <= 10 && most_common_words[i].times >= 3) {
         words_container.innerHTML += `
-            <li class='list-group-item d-flex justify-content-between align-items-center'>
+            <li>
                 ${most_common_words[i].word}
-                <span class='badge badge-primary badge-pill'>${most_common_words[i].times}</span>
+                <span>${most_common_words[i].times}</span>
             </li>`;
         i++;
     };
@@ -32,9 +32,9 @@ if (text != '') {
     // You can set how many words and at least how many times here
     while (i <= 10 && most_common_tags[i].times >= 4) {
         tags_container.innerHTML += `
-                <li class='list-group-item d-flex justify-content-between align-items-center'>
+                <li>
                     ${most_common_tags[i].word}
-                    <span class='badge badge-success badge-pill'>${most_common_tags[i].times}</span>
+                    <span>${most_common_tags[i].times}</span>
                 </li>`;
         i++;
     };
