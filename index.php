@@ -24,7 +24,7 @@
                         </form>
                         <p class="text-sm text-gray-900">
                                 Description: Project to get source code (HTML) from a website and process it to clean information (no html tags, javascript, css code and some words) and get the most common words.
-                                <a href="https://github.com/martin-stepwolf/basic-web-scraping" target="_blank" rel="noopener noreferrer">Source code</a> <br>
+                                <a href="https://github.com/mascam97/basic-web-scraping" target="_blank" rel="noopener noreferrer">Source code</a> <br>
                                 <strong class="text-gray-800">Note: This website does not collect information about you and your interaction (neither cookies nor database).</strong>
                         </p>
                 </div>
